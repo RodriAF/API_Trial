@@ -4,4 +4,4 @@ This is a sketch for creating a REST-API. It's only a trial for personal purpose
 
 ## Datasets
 
-The dataset of diabetes is from this [kaggle link](https://www.kaggle.com/datasets/rahulsah06/machine-learning-for-diabetes-with-python?resource=download)
+The dataset of diabetes used by _apli.py_ is from this [kaggle link](https://www.kaggle.com/datasets/rahulsah06/machine-learning-for-diabetes-with-python?resource=download)
