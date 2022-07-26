@@ -1,5 +1,5 @@
 # Libraries
-from flask import Flask, jsonify, make_response
+from flask import Flask, jsonify, make_response, request
 import pandas as pd
 import numpy as np
 import csv
@@ -39,11 +39,20 @@ def list_data():
         response = app.response_class(response = jsonify(mensaje = "error"),status=500,mimetype='application/json')
         return response
 
+# Trial endpoint for a POST (pass a json like this : {'el': 1} and it returns {'el': 2})
+@app.route('/data/suma', methods = ['POST']) # POST method
+def suma():
+    json_request = request.get_json() # This method NEEDS to have request for geting the JSON from the POST
+    print(json_request)
+    json_request["el"] = int(json_request["el"] + 1)
+    print(json_request)
+    return jsonify(json_request)
+
 def not_found(error):
     return "<h1> This url does not exists </h1>", 404 # This error handler executes thanks to the below code (app.register_error_handler(404, not found))
 
 
 if __name__ == "__main__":
     app.register_error_handler(404, not_found) # This catches the 404 error
-    app.run(debug = True, use_reloader = False)# This runs the API if # debug = True not need to reload if any changes are made
+    app.run(debug = True)#, use_reloader = False)# This runs the API if # debug = True not need to reload if any changes are made
    
